@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "697141716100",
+    "firebase_url": "https://heathyapp4-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "heathyapp4",
+    "storage_bucket": "heathyapp4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:697141716100:android:5afcb4b3cd8094f1060ed1",
+        "android_client_info": {
+          "package_name": "com.example.heathyapp4"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "697141716100-mvimoclr37kot7u6nb17jg3s9bara2kp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAOXakkAW-HSAFobt6YWeZ4Op0ahZGpd8c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "697141716100-mvimoclr37kot7u6nb17jg3s9bara2kp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

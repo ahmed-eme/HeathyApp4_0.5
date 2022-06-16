@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddItemActivite">
+
+  <!--<Button
+      android:id="@+id/addMainImage"
+      android:layout_width="match_parent"
+      android:backgroundTint="@android:color/holo_blue_dark"
+      android:layout_marginStart="40dp"
+      android:layout_marginEnd="40dp"
+      android:layout_height="wrap_content"
+      android:text="Add Main image" />-->
+  <TextView
+      android:id="@+id/textProgress"
+      android:layout_width="match_parent"
+      android:layout_height="30dp">
+
+  </TextView>
+  <Button
+      android:id="@+id/addImages"
+      android:layout_width="match_parent"
+      android:backgroundTint="@android:color/holo_blue_dark"
+      android:layout_marginStart="40dp"
+      android:layout_marginEnd="40dp"
+      android:layout_height="wrap_content"
+      android:text="Add Images" />
+
+  <Spinner
+      android:id="@+id/type1"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="40dp"
+      android:layout_marginEnd="40dp"
+      android:background="@android:drawable/btn_dropdown"
+      android:spinnerMode="dropdown"/>
+
+  <Spinner
+      android:id="@+id/type2"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginStart="40dp"
+      android:layout_marginEnd="40dp"
+      android:background="@android:drawable/btn_dropdown"
+      android:spinnerMode="dropdown"/>
+
+
+  <com.google.android.material.textfield.TextInputLayout
+      android:layout_width="match_parent"
+      app:boxBackgroundColor="@color/white"
+      android:layout_height="wrap_content">
+    <EditText
+        android:id="@+id/ItemName"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Item name"/>
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <com.google.android.material.textfield.TextInputLayout
+      android:layout_width="match_parent"
+      app:boxBackgroundColor="@color/white"
+      android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/ItemPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:hint="Item Price"
+        android:inputType="numberDecimal" />
+
+  </com.google.android.material.textfield.TextInputLayout>
+
+
+  <com.google.android.material.textfield.TextInputLayout
+      android:layout_width="match_parent"
+      app:boxBackgroundColor="@color/white"
+      android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/ItemDiscount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:hint="Item discount"
+        android:inputType="numberDecimal" />
+
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <com.google.android.material.textfield.TextInputLayout
+      android:layout_width="match_parent"
+      app:boxBackgroundColor="@color/white"
+      android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/Quantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:hint="Quantity"
+        android:inputType="numberDecimal" />
+
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <com.google.android.material.textfield.TextInputLayout
+      android:layout_width="match_parent"
+      app:boxBackgroundColor="@color/white"
+      android:layout_height="wrap_content">
+
+    <EditText
+        android:id="@+id/CapacityMG"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:hint="Capacity (mg)"
+        android:inputType="numberDecimal" />
+
+  </com.google.android.material.textfield.TextInputLayout>
+
+  <com.google.android.material.textfield.TextInputLayout
+      android:layout_width="match_parent"
+      app:boxBackgroundColor="@color/white"
+      android:layout_height="wrap_content">
+    <EditText
+        android:id="@+id/medicalInfo"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Medical Information"/>
+  </com.google.android.material.textfield.TextInputLayout>
+
+
+  <com.google.android.material.textfield.TextInputLayout
+      android:layout_width="match_parent"
+      app:boxBackgroundColor="@color/white"
+      android:layout_height="wrap_content">
+    <EditText
+        android:id="@+id/scanned"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginStart="40dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:hint="Scanned Leaflet"/>
+  </com.google.android.material.textfield.TextInputLayout>
+
+
+  <!--  <Button
+        android:id="@+id/addCapacity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/holo_blue_dark"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:text="+ Add more Capacity" />-->
+
+  <Button
+      android:id="@+id/submit"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:backgroundTint="@android:color/holo_red_light"
+      android:layout_marginStart="40dp"
+      android:layout_marginEnd="40dp"
+      android:text="submit" />
+
+
+</LinearLayout>

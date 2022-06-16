@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/home"
+        android:title="Home"
+        android:icon="@drawable/ic_home"/>
+    <item
+        android:id="@+id/YourOrder"
+        android:title="YourOrder"
+        android:icon="@drawable/ic_your_order"/>
+    <item
+        android:id="@+id/report"
+        android:title="report"
+        android:icon="@drawable/ic_report"/>
+    <item
+        android:id="@+id/expired"
+        android:title="expired"
+        android:icon="@drawable/ic_expired"/>
+
+    <item
+        android:id="@+id/menu"
+        android:title="menu"
+        android:icon="@drawable/ic__menu"/>
+</menu>

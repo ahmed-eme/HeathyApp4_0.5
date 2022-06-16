@@ -1,0 +1,40 @@
+<resources>
+    <string name="app_name">Healthy</string>
+
+    //Headings
+    <string name="heading_one">Form an Order</string>
+    <string name="heading_two">Manager Verification</string>
+    <string name="heading_three">Salesman</string>
+    <string name="heading_fourth">Pay Anywhere</string>
+
+    //Description
+    <string name="desc_one">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</string>
+    <string name="desc_two">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</string>
+    <string name="desc_three">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</string>
+    <string name="desc_fourth">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_login2">Login2</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <!--For Offers strings-->
+
+    <string name="title_One_Offer">All baby supplies</string>
+    <string name="title_two_Offers">All baby supplies</string>
+    <string name="title_three_Offers">All baby supplies</string>
+    <string name="title_four_Offers">All baby supplies</string>
+
+    <string name="get_off_one">Get 25% off</string>
+    <string name="get_off_two">Get 25% off</string>
+    <string name="get_off_three">Get 25% off</string>
+    <string name="get_off_four">Get 25% off</string>
+
+
+</resources>

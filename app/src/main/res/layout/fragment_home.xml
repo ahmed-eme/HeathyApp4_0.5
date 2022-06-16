@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".HomeFragment">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:background="@color/blue">
+
+                <EditText
+                    android:id="@+id/searchEt"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="70dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="50dp"
+                    android:textAlignment="center"
+                    android:background="@drawable/search_background"
+                    android:ems="10"
+                    android:hint="       Search for your product"
+                    android:inputType="text"
+                    android:textSize="15sp" />
+
+                <ImageButton
+                    android:id="@+id/SearchBtn"
+                    android:layout_width="38dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="50dp"
+                    android:layout_marginTop="5dp"
+                    android:background="#54B4FF"
+                    android:src="?android:attr/actionModeWebSearchDrawable" />
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="30sp"
+                android:layout_marginStart="20dp"
+                android:textColor="@color/black"
+                android:text="Offers">
+
+            </TextView>
+
+            <androidx.viewpager.widget.ViewPager
+                android:id="@+id/slideViewPagerOffers"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                />
+
+            <LinearLayout
+        android:id="@+id/indicator_layoutOffers"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        />
+
+
+            <TextView
+                android:id="@+id/categories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="Categories"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <HorizontalScrollView
+                android:id="@+id/hsv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/categories"
+                android:layout_marginTop="10dp"
+                android:fillViewport="true"
+                android:measureAllChildren="false"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:id="@+id/linearLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="130dp"
+                    android:orientation="horizontal"
+                    tools:layout_editor_absoluteX="0dp">
+
+                    <RelativeLayout
+                        android:id="@+id/relative1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="150dp"
+                        android:layout_marginStart="20dp">
+
+                        <ImageView
+                            android:id="@+id/Antibiotic"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+                            android:src="@drawable/icons8_pill_100"
+
+                            android:transitionName="aa" />
+
+                        <TextView
+                            android:id="@+id/textLabel1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/Antibiotic"
+                            android:layout_centerInParent="true"
+                            android:singleLine="false"
+                            android:text="Antibiotic"
+
+                            android:textColor="@color/black" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/relative2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="150dp"
+                        android:layout_marginStart="10dp">
+
+                        <ImageView
+                            android:id="@+id/analgesic"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+
+                            android:src="@drawable/icons8_painkiller_98" />
+
+                        <TextView
+                            android:id="@+id/textLabel2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/analgesic"
+                            android:layout_centerInParent="true"
+                            android:text="Antibiotic &amp;\n analgesic"
+
+                            android:textColor="@color/black" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/relative3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="150dp"
+                        android:layout_marginStart="10dp">
+
+                        <ImageView
+                            android:id="@+id/Drugs"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+
+                            android:src="@drawable/icons8_gastrointestinal_tract_100" />
+
+                        <TextView
+                            android:id="@+id/textLabel3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/Drugs"
+                            android:layout_centerInParent="true"
+                            android:singleLine="true"
+                            android:text="Git Drugs"
+                            android:textColor="@color/black"
+
+                            />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/relative4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="150dp"
+                        android:layout_marginStart="10dp">
+
+                        <ImageView
+                            android:id="@+id/Equations"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+
+                            android:src="@drawable/ic_human" />
+
+                        <TextView
+                            android:id="@+id/textLabel"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/Equations"
+                            android:layout_centerInParent="true"
+                            android:text="Equations &amp;\n Resources"
+                            android:textColor="@color/black"
+
+                            />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:id="@+id/relative5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="150dp"
+                        android:layout_marginStart="10dp">
+
+                        <ImageView
+                            android:id="@+id/vitamin"
+                            android:layout_width="80dp"
+                            android:layout_height="80dp"
+
+                            android:src="@drawable/icons8_vitamin_100" />
+
+                        <TextView
+                            android:id="@+id/textLabel5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/vitamin"
+                            android:layout_centerInParent="true"
+                            android:text="vitamin"
+                            android:textColor="@color/black"
+
+                            />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+
+            </HorizontalScrollView>
+
+
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="Shop now"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/hsv" />
+
+            <GridView
+                android:id="@+id/idGVCourses"
+                android:scrollbars="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_marginTop="10dp"
+                android:numColumns="2" />
+            <!---idGVCourses*-->
+
+        </LinearLayout>
+    </ScrollView>
+
