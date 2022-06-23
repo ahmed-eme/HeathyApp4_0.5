@@ -4,19 +4,28 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/drawable/add_image.xml" value="0.1" />
+        <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/drawable/add_image_circle.xml" value="0.1515" />
+        <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/drawable/button_background_not_select.xml" value="0.1505" />
+        <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/drawable/button_background_select.xml" value="0.1505" />
+        <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/drawable/button_shape.xml" value="0.1" />
+        <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/drawable/capacity_adapter.xml" value="0.1175" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/drawable/filter.xml" value="0.255" />
+        <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/drawable/gray_image.xml" value="0.1825" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/drawable/ic__menu.xml" value="0.205" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/drawable/ic_baseline_favorite_24.xml" value="0.205" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/drawable/ic_launcher_background.xml" value="0.205" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/drawable/icon_passwod.xml" value="0.1965" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/drawable/layerlist_drawable.xml" value="0.255" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/drawable/search_background.xml" value="0.19" />
+        <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/drawable/test_adapter.xml" value="0.1175" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/font/poppins.xml" value="0.15260416666666668" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/font/poppins_bold.xml" value="0.15260416666666668" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/font/poppins_light.xml" value="0.15260416666666668" />
-        <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/activity_add_item_activite.xml" value="0.1" />
+        <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/activity_add_item_activite.xml" value="0.25" />
+        <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/activity_add_new_item.xml" value="0.26875" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/activity_categories.xml" value="0.26403985507246375" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/activity_home.xml" value="0.24728260869565216" />
+        <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/activity_item_details.xml" value="0.2640449438202247" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/activity_login.xml" value="0.26875" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/activity_login3.xml" value="0.2546875" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/activity_main.xml" value="0.1" />
@@ -27,13 +36,19 @@
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/activity_splash_screen.xml" value="0.15579710144927536" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/activity_test.xml" value="0.14583333333333334" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/activity_upload_photo_test.xml" value="0.1" />
+        <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/capacity_adapter.xml" value="0.33" />
+        <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/capacity_details.xml" value="0.26875" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/content_login2.xml" value="0.19322916666666667" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/fragment_categories.xml" value="0.1203125" />
+        <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/fragment_expired.xml" value="0.12239583333333333" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/fragment_fav.xml" value="0.13802083333333334" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/fragment_first.xml" value="0.33" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/fragment_home.xml" value="0.25" />
+        <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/fragment_report.xml" value="0.12239583333333333" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/fragment_second.xml" value="0.18" />
+        <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/fragment_your_order.xml" value="0.12239583333333333" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/image_gv_item.xml" value="0.5" />
+        <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/list_images_firebase.xml" value="0.1" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/offers_give_image.xml" value="0.5" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/slider_layout.xml" value="0.26811594202898553" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/slider_offers.xml" value="0.3674911660777385" />
@@ -59,5 +74,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.2205128205128205" />
+      </ProjectState>
+    </option>
   </component>
 </project>

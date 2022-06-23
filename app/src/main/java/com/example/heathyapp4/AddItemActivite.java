@@ -20,6 +20,7 @@ import com.example.heathyapp4.Item.CapacityClass;
 import com.example.heathyapp4.Item.CapacityDAO;
 import com.example.heathyapp4.Item.ItemClass;
 import com.example.heathyapp4.Item.ItemDAO;
+import com.example.heathyapp4.User.UserInfoClass;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -44,7 +45,7 @@ public class AddItemActivite extends AppCompatActivity {
     private DatabaseReference databaseReference;
     private ProgressDialog progressDialog;
     TextView textView;
-    Button selectImages,submit;
+    Button selectImages,submit ,addMainImage;
 
     /******************************Spinner variables *********************************/
     Spinner type1;
@@ -70,6 +71,8 @@ public class AddItemActivite extends AppCompatActivity {
     String idToString;
     int id;
     String urlForClass;
+
+    UserInfoClass user = new UserInfoClass();
 
 
 
@@ -107,6 +110,8 @@ public class AddItemActivite extends AppCompatActivity {
                 Log.d("TAG", "onClick: Submit ");
             }
         });
+
+
     }
 
     /*************************give value to variable ***********************************/
@@ -199,14 +204,15 @@ public class AddItemActivite extends AppCompatActivity {
         scanFetUp = scanFet.getText().toString();
         type1up= type1.getSelectedItem().toString();
         type2up= type2.getSelectedItem().toString();
+        String mgString = String.valueOf(capacityUp);
 
         //  String urlClass = String.valueOf(ImageList.get(1));
-        ItemClass itemClass = new ItemClass(id , itemNameUp , urlForClass , type1up , type2up , medInfoUp , scanFetUp , "uidforUser");
+        ItemClass itemClass = new ItemClass(id , itemNameUp , urlForClass , type1up , type2up , medInfoUp , scanFetUp , user.getUid());
         ItemDAO itemDAO = new ItemDAO();
-        itemDAO.add(idToString,itemClass);
+        //itemDAO.add(idToString,itemClass);
         CapacityClass capacity = new CapacityClass(capacityUp , itemPriceUp , itemDiscountUp , quantityUp);
         CapacityDAO capacityAUD = new CapacityDAO();
-        capacityAUD.add( idToString ,capacity);
+        capacityAUD.add( idToString ,mgString,capacity);
     }
 
 

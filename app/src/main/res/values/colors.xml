@@ -25,5 +25,6 @@
         <color name="white">#FFFFFFFF</color>
      -->
     <color name="blue">#00C6FF</color>
+    <color name="gray">#BFBFBF</color>
 
 </resources>

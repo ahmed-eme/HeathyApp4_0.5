@@ -12,8 +12,8 @@ public class CapacityDAO {
         FirebaseDatabase db = FirebaseDatabase.getInstance();
         databaseReference = db.getReference("Item");
     }
-    public Task<Void> add(String id , ItemClass item )
+    public Task<Void> add(String id ,String mg, CapacityClass item)
     {
-        return databaseReference.child(id).child("Capacity").setValue(item);
+        return databaseReference.child(id).child("Capacity").child(mg).setValue(item);
     }
 }

@@ -9,11 +9,9 @@ import android.os.Bundle;
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
-import androidx.recyclerview.widget.RecyclerView.Adapter;
 import androidx.viewpager.widget.ViewPager;
 import android.text.Html;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,9 +21,9 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.heathyapp4.Item.CapacityAdapter;
-import com.example.heathyapp4.Item.CapacityClass;
+import com.example.heathyapp4.Item.AllItemAdapter;
 import com.example.heathyapp4.Item.ItemClass;
+import com.example.heathyapp4.Item.ItemOfAllObject;
 import com.example.heathyapp4.Item.itemAdapter;
 import com.example.heathyapp4.Item.NewItemClass;
 import com.google.firebase.database.DataSnapshot;
@@ -36,7 +34,6 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 
 public class HomeFragment extends Fragment {
@@ -112,16 +109,10 @@ public class HomeFragment extends Fragment {
 
         ViewCompat.setNestedScrollingEnabled(getGrid, true);
 
-
-
-
-
-
-        // initializing our variable for firebase
-        // firestore and getting its instance.
-
         db = FirebaseFirestore.getInstance();
         CategoriesClick(AntiboticView , AnalgesicView , DrugsView , EquationsView ,VitaminView);
+
+
         GetdataonRealTime();
 
         return view;
@@ -270,10 +261,14 @@ public class HomeFragment extends Fragment {
     private void GetdataonRealTime()
     {
         ArrayList<ItemClass> list = new ArrayList();
-        ArrayList<CapacityClass> listCap = new ArrayList<>();
-
+       // ArrayList<NewItemClass> AllItem = new ArrayList<>();
 
         itemAdapter adapter = new itemAdapter(getActivity(), list);
+       // AllItemAdapter adapter2 = new AllItemAdapter(getActivity() ,AllItem );
+       // ItemOfAllObject itemOfAllObject = new ItemOfAllObject();
+
+
+
 
 
         myRef.addValueEventListener(new ValueEventListener() {
@@ -282,15 +277,15 @@ public class HomeFragment extends Fragment {
                 list.clear();
               for(DataSnapshot snapshot :dataSnapshot.getChildren())
               {
-                ItemClass item = snapshot.getValue(ItemClass.class);
-                CapacityClass item2 = snapshot.getValue(CapacityClass.class);
-                System.out.println(listCap);
-                  System.out.println(list);
-                listCap.add(item2);
-                list.add(item);
+
+                 ItemClass item = snapshot.getValue(ItemClass.class);
+
+                 list.add(item);
                 System.out.println(list.indexOf(snapshot));
               }
+
                 getGrid.setAdapter(adapter);
+
             }
 
             @Override

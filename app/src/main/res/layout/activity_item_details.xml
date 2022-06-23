@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Item.ItemDetails">
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_marginStart="20dp"
+            android:textColor="@color/black"
+            android:text="Vitamin">
+
+        </TextView>
+
+        <LinearLayout
+            android:id="@+id/indicator_layoutOffers"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            />
+
+
+        <TextView
+            android:id="@+id/categories"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="itemNametxt"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_gravity="center"
+                android:id="@+id/mainImage"
+                android:layout_width="300dp"
+                android:layout_height="250dp"
+                android:layout_margin="4dp"
+                android:background="@color/white"
+                android:backgroundTint="@color/white"
+                android:padding="3dp" />
+        </androidx.cardview.widget.CardView>
+
+
+
+        <HorizontalScrollView
+            android:id="@+id/hsv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/categories"
+            android:layout_marginTop="10dp"
+            android:fillViewport="true"
+            android:measureAllChildren="false"
+            android:scrollbars="none"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/idRVItems"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="#fff" />
+
+        <!--<GridView
+            android:id="@+id/idGVCourses"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:layout_marginTop="10dp"
+            android:numColumns="2"
+            android:scrollbars="vertical" />-->
+        <!---idGVCourses*-->
+
+
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_marginStart="40dp"
+            android:text="Capacity" />
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/capacityRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="#fff" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginStart="20dp"
+                android:orientation="vertical">
+
+                <!--              Left side             -->
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="was :" />
+                    <TextView
+                        android:id="@+id/thePriceText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="price*" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/topDeal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="top Deal :" />
+
+                    <TextView
+                        android:textColor="@color/blue"
+                        android:id="@+id/discountText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="dis" />
+
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="you save :" />
+                    <TextView
+                        android:textColor="@color/blue"
+                        android:id="@+id/saveTxt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="save*" />
+                    <TextView
+                        android:textColor="@color/blue"
+                        android:id="@+id/discountper"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="(20%)" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/Ending"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Ends in " />
+                    <TextView
+                        android:textColor="@color/blue"
+                        android:id="@+id/timer"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="timer*" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="All prices include VAT." />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Qty :" />
+                    <Spinner
+                        android:id="@+id/extype2"
+                        android:layout_width="30dp"
+                        android:layout_height="wrap_content"
+                        android:background="@android:drawable/btn_dropdown"
+                        android:spinnerMode="dropdown"/>
+
+                </LinearLayout>
+
+                <!--             End Left side             -->
+
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <!--             Right side             -->
+
+
+
+
+                <Button
+                    android:id="@+id/addToCart"
+                    android:layout_width="match_parent"
+                    android:layout_marginHorizontal="7dp"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/ic_cart"
+                    android:text="Add to cart" />
+
+                <Button
+                    android:id="@+id/buyNow"
+                    android:layout_width="match_parent"
+                    android:backgroundTint="@android:color/holo_red_dark"
+                    android:layout_marginHorizontal="7dp"
+                    android:layout_height="wrap_content"
+                    android:drawableRight="@drawable/ic_bag"
+                    android:text="buy Now" />
+
+                <TextView
+                    android:id="@+id/textView12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="The minimum order is 5 pieces and you can add more if you want" />
+
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+<!--med info -->
+
+        <TextView
+            android:layout_marginTop="40dp"
+            android:id="@+id/button"
+            android:paddingHorizontal="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:drawableEnd="@drawable/ic_arrow_right"
+            android:drawablePadding="2dp"
+            android:text="Medical Information" />
+
+        <LinearLayout
+            android:id="@+id/viewsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="TextBox One" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_marginVertical="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/gray" />
+<!--scan info-->
+        <TextView
+
+            android:id="@+id/scanBtn"
+            android:paddingHorizontal="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="17sp"
+            android:drawableEnd="@drawable/ic_arrow_right"
+            android:drawablePadding="2dp"
+            android:text="Scanned Leaflet" />
+
+        <LinearLayout
+            android:id="@+id/scanContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="TextBox Two" />
+
+
+        </LinearLayout>
+
+        <androidx.fragment.app.FragmentContainerView
+            android:layout_width="match_parent"
+            android:layout_height="40dp">
+
+        </androidx.fragment.app.FragmentContainerView>
+
+
+
+
+
+
+    </LinearLayout>
+</ScrollView>
+

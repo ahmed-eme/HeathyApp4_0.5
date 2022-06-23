@@ -76,7 +76,7 @@ public class CategoriesFragment extends Fragment {
 
         itemAdapter adapter = new itemAdapter(getActivity(), list);
         Query query = myRef
-                .orderByChild("type")
+                .orderByChild("type1")
                 .equalTo(value);
 
         query.addListenerForSingleValueEvent(new ValueEventListener() {

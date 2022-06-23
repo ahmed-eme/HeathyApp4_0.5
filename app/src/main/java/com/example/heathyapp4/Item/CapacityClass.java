@@ -1,7 +1,7 @@
 package com.example.heathyapp4.Item;
 
 
-public class CapacityClass extends ItemClass {
+public class CapacityClass {
 
     private int mg;
     private double Price;

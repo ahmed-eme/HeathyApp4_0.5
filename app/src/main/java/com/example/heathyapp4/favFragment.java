@@ -41,7 +41,7 @@ public class favFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        }
+    }
 
     private GridView getGridid;
     private FirebaseFirestore db;
@@ -62,9 +62,12 @@ public class favFragment extends Fragment {
 
         getGridid = view.findViewById(R.id.idGVCourses);
 
+
+
+
         db = FirebaseFirestore.getInstance();
 
-       // getidfromUserFav();
+        // getidfromUserFav();
 
         GetdataonRealTime();
 
@@ -100,34 +103,42 @@ public class favFragment extends Fragment {
     {
 
 
-/*        Query userQuery = userFavRef.orderByChild("id");
 
-        ArrayList<NewItemClass> list = new ArrayList();
+        ArrayList<ItemClass> list = new ArrayList();
 
         itemAdapter adapter = new itemAdapter(getActivity(), list);
-        NewItemClass newItemClass = new NewItemClass();
+        ItemClass newItemClass = new ItemClass();
 
+        Query query = itemRef;
 
-
-        Query query = itemRef
-                .orderByChild("id");
-        //  .equalTo(userFavRef.child(""));
+        /*************************************************/
+        //  .equalTo(userFavRef.child("id"));
 
         query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.getChildrenCount()>0) {
-
                     list.clear();
-                    NewItemClass newItemClass = new NewItemClass();
+                    ItemClass newItemClass = new ItemClass();
                     for(DataSnapshot snapshot :dataSnapshot.getChildren() )
                     {
-                        NewItemClass item = snapshot.getValue(NewItemClass.class);
-                        list.add(item);
-                        System.out.println(list.indexOf(snapshot));
+                        String i = snapshot.getKey();
+                        String t = snapshot.getRef().getKey();
+
+                        String w = snapshot.child("Favorite").child(user.getUid()).getKey();
+                        if(snapshot.child("Favorite").exists())
+                        {
+                            assert w != null;
+                            if(w.equals(user.getUid()))
+                            {
+                                ItemClass item = snapshot.getValue(ItemClass.class);
+
+                                list.add(item);
+                                System.out.println(list.indexOf(snapshot));
+                            }
+                        }
                     }
                     getGridid.setAdapter(adapter);
-
                 }
                 else{
                     System.out.println("not found");
@@ -138,106 +149,7 @@ public class favFragment extends Fragment {
             public void onCancelled(DatabaseError databaseError) {
 
             }
-        });*/
-
-        /*****************************************************************/
-
-        ArrayList<ItemClass> list = new ArrayList();
-
-        itemAdapter adapter = new itemAdapter(getActivity(), list);
-        NewItemClass newItemClass = new NewItemClass();
-
-            userFavRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot snapshot) {
-                    for(DataSnapshot data :snapshot.getChildren() )
-                    {
-                       long getIdFavLong = data.child("id").getValue(long.class);
-                       System.out.println(getIdFavLong);
-
-                       itemRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                           @Override
-                           public void onDataChange(@NonNull DataSnapshot snapshot) {
-                               for(DataSnapshot data :snapshot.getChildren() ) {
-                                   long getid = data.child("id").getValue(long.class);
-                                   if (getid == getIdFavLong)
-                                   {
-                                       ItemClass item = data.getValue(ItemClass.class);
-                                       list.add(item);
-                                   }
-                                   System.out.println(getid);
-                               }
-                               getGridid.setAdapter(adapter);
-                           }
-
-                           @Override
-                           public void onCancelled(@NonNull DatabaseError error) {
-
-                           }
-                       });
-                    }
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError error) {
-
-                }
-            });
-
-
-        /**********************Two loop*************************/
-
-
-      /*  userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                for (DataSnapshot child: snapshot.getChildren()) {
-                    int id = newItemClass.getId();
-                    Object id2 = child.getValue();
-                    Query itemQuery = itemRef .orderByChild("id").equalTo(id);
-                    System.out.println(child.getKey());
-                    System.out.println(child.child("id").getValue());
-
-                    *//*****************************************************//*
-                    itemQuery.addListenerForSingleValueEvent(new ValueEventListener() {
-                        @Override
-                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                            if(dataSnapshot.getChildrenCount()>0) {
-                               // list.clear();
-                                NewItemClass newItemClass = new NewItemClass();
-                                for(DataSnapshot snapshot :dataSnapshot.getChildren() )
-                                {
-                                    NewItemClass item = snapshot.getValue(NewItemClass.class);
-                                    list.add(item);
-                                    System.out.println(list.indexOf(snapshot));
-                                }
-                                getGridid.setAdapter(adapter);
-                            }
-                            else{
-                                System.out.println("not found");
-                            }
-
-                        }
-                        @Override
-                        public void onCancelled(DatabaseError databaseError) {
-
-                        }
-                    });
-                    *//*****************************************************//*
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });*/
-
-
-
-        /*************************************************/
-
-
+        });
 
         /*************************************************************/
 

@@ -13,7 +13,8 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
+import com.example.heathyapp4.AddItem.AddNewItem;
+import com.example.heathyapp4.Item.ItemDetails;
 
 
 public class MainActivity extends AppCompatActivity {
