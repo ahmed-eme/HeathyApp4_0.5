@@ -13,8 +13,11 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.heathyapp4.AddItem.AddNewItem;
-import com.example.heathyapp4.Item.ItemDetails;
+import com.example.heathyapp4.AddItem.AddJustItem;
+import com.example.heathyapp4.Home.HomeActivity;
+import com.example.heathyapp4.SignUps.Login;
+import com.example.heathyapp4.Startpages.ViewPagerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -36,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
        // FirebaseAuth.getInstance().signOut();
 
 
-       Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+       Intent intent = new Intent(MainActivity.this, AddJustItem.class);
        startActivity(intent);
        finish();
 

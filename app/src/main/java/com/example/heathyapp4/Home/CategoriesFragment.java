@@ -1,4 +1,4 @@
-package com.example.heathyapp4;
+package com.example.heathyapp4.Home;
 
 import static android.content.ContentValues.TAG;
 
@@ -17,6 +17,7 @@ import android.widget.TextView;
 import com.example.heathyapp4.Item.ItemClass;
 import com.example.heathyapp4.Item.NewItemClass;
 import com.example.heathyapp4.Item.itemAdapter;
+import com.example.heathyapp4.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -72,7 +73,7 @@ public class CategoriesFragment extends Fragment {
     private void GetdataonRealTime(String value)
     {
 
-        ArrayList<ItemClass> list = new ArrayList();
+        ArrayList<ItemViewClass> list = new ArrayList();
 
         itemAdapter adapter = new itemAdapter(getActivity(), list);
         Query query = myRef
@@ -83,16 +84,31 @@ public class CategoriesFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 if(dataSnapshot.getChildrenCount()>0) {
+                    String id = null;
+                    String type1 = null;
+                    String name = null;
+                    double price = 0.0;
+                    String image = null;
 
-                    list.clear();
-
-                    for(DataSnapshot snapshot :dataSnapshot.getChildren() )
-                    {
-                        ItemClass item = snapshot.getValue(ItemClass.class);
+                    for (DataSnapshot snap : dataSnapshot.getChildren()) {
+                        id = snap.getKey();
+                        type1 = snap.child("type1").getValue(String.class);
+                        name = snap.child("name").getValue(String.class);
+                        for (DataSnapshot snap2 : dataSnapshot.child(id).child("ImgLink").getChildren()) {
+                            ArrayList<String> imagelist = new ArrayList<>();
+                            imagelist.add(snap2.getValue(String.class));
+                            image = imagelist.get(0);
+                            break;
+                        }
+                        for (DataSnapshot snap3 : dataSnapshot.child(id).child("Capacity").getChildren()) {
+                            price = snap3.child("price").getValue(double.class);
+                            break;
+                        }
+                        ItemViewClass item = new ItemViewClass(image, type1, name, price, id);
                         list.add(item);
-                        System.out.println(list.indexOf(snapshot));
+
+                        getGrid.setAdapter(adapter);
                     }
-                    getGrid.setAdapter(adapter);
 
                 }
                 else{

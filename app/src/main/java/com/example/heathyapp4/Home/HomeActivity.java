@@ -1,4 +1,4 @@
-package com.example.heathyapp4;
+package com.example.heathyapp4.Home;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -9,10 +9,11 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.example.heathyapp4.AddItemActivite;
+import com.example.heathyapp4.R;
+import com.example.heathyapp4.YourOrderFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -31,6 +32,10 @@ public class HomeActivity extends AppCompatActivity {
             case R.id.notification:
                 Intent intent = new Intent(HomeActivity.this, AddItemActivite.class);
                 startActivity(intent);
+                return true;
+            case R.id.cart:
+                Intent i = new Intent(HomeActivity.this, MyCart.class);
+                startActivity(i);
                 return true;
         }
         return super.onOptionsItemSelected(item);

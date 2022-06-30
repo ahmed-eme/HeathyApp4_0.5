@@ -1,4 +1,4 @@
-package com.example.heathyapp4;
+package com.example.heathyapp4.Startpages;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.example.heathyapp4.MainActivity;
+import com.example.heathyapp4.R;
 
 
 public class SplashScreen extends AppCompatActivity {

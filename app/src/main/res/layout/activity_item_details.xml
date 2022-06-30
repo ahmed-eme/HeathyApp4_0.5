@@ -227,8 +227,8 @@
                         android:layout_height="wrap_content"
                         android:text="Qty :" />
                     <Spinner
-                        android:id="@+id/extype2"
-                        android:layout_width="30dp"
+                        android:id="@+id/qtySpinner"
+                        android:layout_width="80dp"
                         android:layout_height="wrap_content"
                         android:background="@android:drawable/btn_dropdown"
                         android:spinnerMode="dropdown"/>
@@ -303,6 +303,7 @@
             android:padding="5dp" >
 
             <TextView
+                android:id="@+id/madInfoText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
@@ -337,6 +338,7 @@
             android:padding="5dp" >
 
             <TextView
+                android:id="@+id/scanLeafletText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"

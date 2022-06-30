@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/FrameLayoutCategory"
-    tools:context=".CategoriesFragment">
+    tools:context=".Home.CategoriesFragment">
 
     <TextView
         android:id="@+id/favText"

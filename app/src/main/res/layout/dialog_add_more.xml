@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp">
+
+        <EditText
+            android:id="@+id/CapacityEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="mg"
+            android:inputType="number"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/priceEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="50dp"
+            android:inputType="number"
+            android:hint="price"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/discountEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
+            android:inputType="number"
+            android:hint="discount"
+            android:textSize="20dp" />
+
+        <EditText
+            android:id="@+id/qtyEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="150dp"
+            android:inputType="number"
+            android:hint="Qty"
+            android:textSize="20dp" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

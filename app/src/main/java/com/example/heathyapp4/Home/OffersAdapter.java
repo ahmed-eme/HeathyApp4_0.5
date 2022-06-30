@@ -1,4 +1,4 @@
-package com.example.heathyapp4;
+package com.example.heathyapp4.Home;
 
 import android.content.Context;
 import android.view.LayoutInflater;

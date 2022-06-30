@@ -1,4 +1,4 @@
-package com.example.heathyapp4;
+package com.example.heathyapp4.SignUps;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +17,9 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 
+import com.example.heathyapp4.Home.HomeActivity;
+import com.example.heathyapp4.Model;
+import com.example.heathyapp4.R;
 import com.example.heathyapp4.User.DAOUser;
 import com.example.heathyapp4.User.UserInfoClass;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -165,7 +168,7 @@ public class SignUpSecond extends AppCompatActivity {
                         progressDialog.show();
 
                         sendUserToNextPage();
-                        Toast.makeText(SignUpSecond.this, "Sign Successful", Toast.LENGTH_SHORT).show();
+
 
 
                 }

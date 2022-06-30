@@ -1,4 +1,4 @@
-package com.example.heathyapp4;
+package com.example.heathyapp4.Startpages;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
+
+import com.example.heathyapp4.R;
 
 public class ViewPagerAdapter extends PagerAdapter {
 

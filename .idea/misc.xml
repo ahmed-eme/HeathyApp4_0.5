@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Dell/AppData/Local/Android/Sdk/platforms/android-32/data/res/layout/simple_spinner_item.xml" value="0.26875" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/drawable/add_image.xml" value="0.1" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/drawable/add_image_circle.xml" value="0.1515" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/drawable/button_background_not_select.xml" value="0.1505" />
@@ -22,6 +23,8 @@
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/font/poppins_bold.xml" value="0.15260416666666668" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/font/poppins_light.xml" value="0.15260416666666668" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/activity_add_item_activite.xml" value="0.25" />
+        <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/activity_add_just_item.xml" value="0.1" />
+        <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/activity_add_just_item2.xml" value="0.26875" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/activity_add_new_item.xml" value="0.26875" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/activity_categories.xml" value="0.26403985507246375" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/activity_home.xml" value="0.24728260869565216" />
@@ -30,6 +33,7 @@
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/activity_login3.xml" value="0.2546875" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/activity_mainscreen.xml" value="0.1" />
+        <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/activity_my_cart.xml" value="0.26875" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/activity_sgin_up.xml" value="0.26811594202898553" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/activity_sign_up.xml" value="0.33" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/activity_sign_up_second.xml" value="0.33" />
@@ -38,7 +42,10 @@
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/activity_upload_photo_test.xml" value="0.1" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/capacity_adapter.xml" value="0.33" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/capacity_details.xml" value="0.26875" />
+        <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/card_add_more.xml" value="0.13069908814589665" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/content_login2.xml" value="0.19322916666666667" />
+        <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/date_time_picker.xml" value="0.25" />
+        <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/dialog_add_more.xml" value="0.33" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/fragment_categories.xml" value="0.1203125" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/fragment_expired.xml" value="0.12239583333333333" />
         <entry key="..\:/Users/Dell/Desktop/HeathyApp4/app/src/main/res/layout/fragment_fav.xml" value="0.13802083333333334" />

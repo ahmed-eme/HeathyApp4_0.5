@@ -1,8 +1,7 @@
-package com.example.heathyapp4;
+package com.example.heathyapp4.Home;
 
 import static android.content.ContentValues.TAG;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -10,13 +9,12 @@ import android.util.Log;
 import android.widget.GridView;
 
 import com.example.heathyapp4.Item.ItemClass;
-import com.example.heathyapp4.Item.NewItemClass;
 import com.example.heathyapp4.Item.itemAdapter;
+import com.example.heathyapp4.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
@@ -83,7 +81,7 @@ public class CategoriesActivity extends AppCompatActivity {
 
       ArrayList<ItemClass> list = new ArrayList();
 
-        itemAdapter adapter = new itemAdapter(CategoriesActivity.this, list);
+       // itemAdapter adapter = new itemAdapter(CategoriesActivity.this, list);
         newRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -94,7 +92,7 @@ public class CategoriesActivity extends AppCompatActivity {
                     list.add(item);
                     System.out.println(list.indexOf(snapshot));
                 }
-                getGrid.setAdapter(adapter);
+               // getGrid.setAdapter(adapter);
             }
 
             @Override

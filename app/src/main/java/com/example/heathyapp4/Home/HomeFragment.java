@@ -1,4 +1,4 @@
-package com.example.heathyapp4;
+package com.example.heathyapp4.Home;
 
 import static android.content.ContentValues.TAG;
 
@@ -6,12 +6,12 @@ import android.annotation.SuppressLint;
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.viewpager.widget.ViewPager;
 import android.text.Html;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,19 +21,16 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.example.heathyapp4.Item.AllItemAdapter;
-import com.example.heathyapp4.Item.ItemClass;
-import com.example.heathyapp4.Item.ItemOfAllObject;
 import com.example.heathyapp4.Item.itemAdapter;
-import com.example.heathyapp4.Item.NewItemClass;
+import com.example.heathyapp4.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+
 
 
 public class HomeFragment extends Fragment {
@@ -62,8 +59,6 @@ public class HomeFragment extends Fragment {
     }
 
     private GridView getGrid;
-    private FirebaseFirestore db;
-
 
 
 
@@ -73,7 +68,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
 
@@ -109,11 +104,11 @@ public class HomeFragment extends Fragment {
 
         ViewCompat.setNestedScrollingEnabled(getGrid, true);
 
-        db = FirebaseFirestore.getInstance();
+
         CategoriesClick(AntiboticView , AnalgesicView , DrugsView , EquationsView ,VitaminView);
 
 
-        GetdataonRealTime();
+       GetdataonRealTime();
 
         return view;
     }
@@ -177,11 +172,6 @@ public class HomeFragment extends Fragment {
 
         }
     };
-
-    private int getitem(int i){
-
-        return mSLideViewPager.getCurrentItem() + i;
-    }
 
     /***********************************************/
 
@@ -257,48 +247,51 @@ public class HomeFragment extends Fragment {
 
     }
 
+    private void GetdataonRealTime() {
 
-    private void GetdataonRealTime()
-    {
-        ArrayList<ItemClass> list = new ArrayList();
-       // ArrayList<NewItemClass> AllItem = new ArrayList<>();
-
+        ArrayList<ItemViewClass> list = new ArrayList<>();
         itemAdapter adapter = new itemAdapter(getActivity(), list);
-       // AllItemAdapter adapter2 = new AllItemAdapter(getActivity() ,AllItem );
-       // ItemOfAllObject itemOfAllObject = new ItemOfAllObject();
 
-
-
-
-
-        myRef.addValueEventListener(new ValueEventListener() {
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                list.clear();
-              for(DataSnapshot snapshot :dataSnapshot.getChildren())
-              {
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                 ItemClass item = snapshot.getValue(ItemClass.class);
+                String id = null;
+                String type1 = null;
+                String name = null;
+                double price = 0.0;
+                String image = null;
 
-                 list.add(item);
-                System.out.println(list.indexOf(snapshot));
-              }
+                for (DataSnapshot snap : snapshot.getChildren()) {
+                    id = snap.getKey();
+                    type1 = snap.child("type1").getValue(String.class);
+                    name = snap.child("name").getValue(String.class);
+                    for (DataSnapshot snap2 : snapshot.child(id).child("ImgLink").getChildren()) {
+                        ArrayList<String> imagelist = new ArrayList<>();
+                        imagelist.add(snap2.getValue(String.class));
+                        image = imagelist.get(0);
+                        break;
+                    }
+                    for (DataSnapshot snap3 : snapshot.child(id).child("Capacity").getChildren()) {
+                        price = snap3.child("price").getValue(double.class);
+                        break;
+                    }
+                    ItemViewClass item = new ItemViewClass(image, type1, name, price, id);
+                    list.add(item);
 
-                getGrid.setAdapter(adapter);
+                    getGrid.setAdapter(adapter);
+                }
+
 
             }
 
             @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w(TAG, "Failed to read value.", error.toException());
+            public void onCancelled(@NonNull DatabaseError error) {
+                throw error.toException();
             }
         });
+
     }
-
-
-
-
 
 }
 

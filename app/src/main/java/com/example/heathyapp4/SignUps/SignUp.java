@@ -1,4 +1,4 @@
-package com.example.heathyapp4;
+package com.example.heathyapp4.SignUps;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.heathyapp4.R;
 import com.example.heathyapp4.User.DAOUser;
 import com.example.heathyapp4.User.UserInfoClass;
 import com.google.android.gms.tasks.OnCompleteListener;
