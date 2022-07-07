@@ -54,11 +54,15 @@
             </TextView>
 
             <androidx.viewpager.widget.ViewPager
+                android:clipToPadding="false"
+                android:overScrollMode="never"
                 android:id="@+id/slideViewPagerOffers"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_gravity="center"
                 />
+
+
 
             <LinearLayout
         android:id="@+id/indicator_layoutOffers"
@@ -118,8 +122,8 @@
                             android:layout_below="@id/Antibiotic"
                             android:layout_centerInParent="true"
                             android:singleLine="false"
-                            android:text="Antibiotic"
 
+                            android:text="Antibiotic"
                             android:textColor="@color/black" />
                     </RelativeLayout>
 
@@ -141,9 +145,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_below="@id/analgesic"
-                            android:layout_centerInParent="true"
-                            android:text="Antibiotic &amp;\n analgesic"
 
+                            android:layout_centerInParent="true"
+                            android:text="Antipyretic &amp;\n analgesic"
                             android:textColor="@color/black" />
                     </RelativeLayout>
 
@@ -168,9 +172,8 @@
                             android:layout_centerInParent="true"
                             android:singleLine="true"
                             android:text="Git Drugs"
-                            android:textColor="@color/black"
 
-                            />
+                            android:textColor="@color/black" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -193,9 +196,8 @@
                             android:layout_below="@id/Equations"
                             android:layout_centerInParent="true"
                             android:text="Equations &amp;\n Resources"
-                            android:textColor="@color/black"
 
-                            />
+                            android:textColor="@color/black" />
                     </RelativeLayout>
 
                     <RelativeLayout
@@ -230,9 +232,8 @@
             </HorizontalScrollView>
 
 
-
+<!--TODO: change it to best selling-->
             <TextView
-                android:id="@+id/textView9"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"

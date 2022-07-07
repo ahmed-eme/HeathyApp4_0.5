@@ -4,6 +4,7 @@ import static android.content.ContentValues.TAG;
 
 import android.annotation.SuppressLint;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -23,6 +24,8 @@ import android.widget.TextView;
 
 import com.example.heathyapp4.Item.itemAdapter;
 import com.example.heathyapp4.R;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -68,8 +71,8 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_home, container, false);
+
 
 
 
@@ -82,9 +85,8 @@ public class HomeFragment extends Fragment {
 
         setUpindicator(0);
         mSLideViewPager.addOnPageChangeListener(viewListener);
-
-
-
+        mSLideViewPager.setOffscreenPageLimit(2);
+        mSLideViewPager.setPageMargin(-200);
 
         /*************************************************************/
 
@@ -246,26 +248,37 @@ public class HomeFragment extends Fragment {
         });
 
     }
-
+    private  FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private void GetdataonRealTime() {
 
         ArrayList<ItemViewClass> list = new ArrayList<>();
         itemAdapter adapter = new itemAdapter(getActivity(), list);
 
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        myRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
+                list.clear();
                 String id = null;
                 String type1 = null;
                 String name = null;
                 double price = 0.0;
                 String image = null;
+                boolean isFav = false;
+                int favicon = 0;
 
                 for (DataSnapshot snap : snapshot.getChildren()) {
+
                     id = snap.getKey();
                     type1 = snap.child("type1").getValue(String.class);
                     name = snap.child("name").getValue(String.class);
+                    isFav = snap.child("Favorite").hasChild(user.getUid());
+                    if(isFav)
+                    {
+                         favicon = R.drawable.ic_favorite_red;
+                    }
+                    else {
+                        favicon = R.drawable.ic_baseline_favorite_24;
+                    }
                     for (DataSnapshot snap2 : snapshot.child(id).child("ImgLink").getChildren()) {
                         ArrayList<String> imagelist = new ArrayList<>();
                         imagelist.add(snap2.getValue(String.class));
@@ -276,22 +289,32 @@ public class HomeFragment extends Fragment {
                         price = snap3.child("price").getValue(double.class);
                         break;
                     }
-                    ItemViewClass item = new ItemViewClass(image, type1, name, price, id);
-                    list.add(item);
+                        /*for(DataSnapshot snap4 : snapshot.child(id).child("Favorite").getChildren())
+                        {
+                            if(snap4.hasChild(user.getUid()))
+                            {
+                                isFav = true;
+                                break;
+                            }
+                            else
+                            {
+                                isFav = false;
+                            }
 
-                    getGrid.setAdapter(adapter);
-                }
+                        }*/
+                            ItemViewClass item = new ItemViewClass(image, type1, name, price, id ,favicon);
+                            list.add(item);
 
-
+                            }
+                getGrid.setAdapter(adapter);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                throw error.toException();
+
             }
         });
 
     }
 
 }
-

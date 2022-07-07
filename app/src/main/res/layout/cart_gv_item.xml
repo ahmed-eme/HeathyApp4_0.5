@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="4dp"
+        android:elevation="8dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0.0px"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        app:cardElevation="1dp"
+        app:cardPreventCornerOverlap="false"
+        >
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_marginTop="10dp"
+                android:layout_height="match_parent">
+
+
+
+                <TextView
+                    android:id="@+id/nameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="Item name*"
+                    android:textAlignment="textStart"
+
+                    android:textColor="@color/black" />
+
+                <TextView
+                    android:id="@+id/typeTxt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="20dp"
+                    android:text="type*"
+                    android:textSize="12sp"
+                    />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_marginStart="20sp"
+                        android:id="@+id/Ending"
+                        android:textSize="12sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Ends in " />
+                    <TextView
+
+                        android:id="@+id/daysTxt"
+                        android:textSize="10sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="d*" />
+
+                    <TextView
+                        android:id="@+id/hoursTxt"
+                        android:textSize="10sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="h*" />
+
+                    <TextView
+                        android:id="@+id/minsTxt"
+                        android:textSize="10sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="m*" />
+                    <TextView
+                        android:id="@+id/secTxt"
+                        android:textSize="10sp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="s*" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_marginStart="20sp"
+                        android:id="@+id/priceTv"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="was*" />
+                    <View
+                        android:layout_width="6dp"
+                        android:layout_height="1dp">
+
+                    </View>
+                    <TextView
+                        android:textColor="@color/blue"
+                        android:id="@+id/afterDis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="price now*" />
+
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="20sp"
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
+
+                    <androidx.constraintlayout.utils.widget.ImageFilterView
+                        android:id="@+id/plus"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="bottom"
+                        app:roundPercent="1"
+                        android:elevation="1dp"
+                        app:srcCompat="@drawable/ic_add_blue" />
+
+                    <View
+                        android:layout_width="6dp"
+                        android:layout_height="1dp">
+
+                    </View>
+
+                    <TextView
+                        android:id="@+id/qtyTv"
+                        android:layout_width="wrap_content"
+                        android:text="Qty"
+                        android:layout_height="wrap_content">
+
+                    </TextView>
+
+                    <View
+                        android:layout_width="6dp"
+                        android:layout_height="1dp">
+
+                    </View>
+
+                    <androidx.constraintlayout.utils.widget.ImageFilterView
+                        android:id="@+id/minus"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="bottom"
+                        app:roundPercent="1"
+                        android:elevation="1dp"
+                        app:srcCompat="@drawable/ic_remove_blue" />
+
+
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+
+
+            <ImageView
+                android:id="@+id/imageUrl"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_margin="4dp"
+                android:layout_gravity="right|end"
+                android:background="@color/white"
+                android:backgroundTint="@color/white"
+                android:elevation="2dp"
+                android:padding="3dp" />
+
+
+
+
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+
+
+
+
+</LinearLayout>

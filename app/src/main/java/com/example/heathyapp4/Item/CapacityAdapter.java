@@ -58,6 +58,7 @@ public class CapacityAdapter extends RecyclerView.Adapter<CapacityAdapter.ViewHo
                     intent.putExtra("discount" , modal.getDiscount());
                     intent.putExtra("Qty" , modal.getQuantity());
                     intent.putExtra("mg" , modal.getMg());
+                    intent.putExtra("endDeal" , modal.getEndDeal());
 
 
                     itemInfoLisner.ItemInfoLisner(intent);

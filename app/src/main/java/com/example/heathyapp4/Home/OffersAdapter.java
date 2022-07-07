@@ -18,11 +18,9 @@ public class OffersAdapter extends PagerAdapter {
     Context context;
 
     int images[] = {
-
             R.drawable.layerlist_drawable,
             R.drawable.layerlist_drawable,
             R.drawable.layerlist_drawable,
-
     };
 
     int headings[] = {
@@ -53,6 +51,12 @@ public class OffersAdapter extends PagerAdapter {
     public int getCount() {
         return  headings.length;
     }
+
+  /*  @Override
+    public float getPageWidth(int position) {
+        return(0.8f);
+    }*/
+
 
 
     public boolean isViewFromObject(@NonNull View view, @NonNull Object object) {

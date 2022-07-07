@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
        // FirebaseAuth.getInstance().signOut();
 
 
-       Intent intent = new Intent(MainActivity.this, AddJustItem.class);
+       Intent intent = new Intent(MainActivity.this, HomeActivity.class);
        startActivity(intent);
        finish();
 

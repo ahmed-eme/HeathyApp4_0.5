@@ -4,7 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
+import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
@@ -13,10 +16,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 import com.example.heathyapp4.R;
 import com.example.heathyapp4.User.UserInfoClass;
@@ -35,8 +40,11 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Locale;
 
 public class AddJustItem extends AppCompatActivity {
     /************************** Variables for add images ******************/
@@ -143,8 +151,9 @@ public class AddJustItem extends AppCompatActivity {
         final EditText discount = view.findViewById(R.id.discountEdit);
         final EditText quantity = view.findViewById(R.id.qtyEdit);
 
+
         builder.setView(view);
-        builder.setTitle("Enter name")
+        builder.setTitle("Enter product details")
                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
@@ -164,7 +173,44 @@ public class AddJustItem extends AppCompatActivity {
         dialog = builder.create();
     }
 
-    private void addCard(String name , String price , String discount , String quantity) {
+    Calendar date;
+    private String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss" ;
+    SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT , Locale.US);
+    Context context = this;
+
+
+
+    public void showDateTimePicker(String capacity) {
+        final Calendar currentDate = Calendar.getInstance();
+        date = Calendar.getInstance();
+        new DatePickerDialog(context, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                date.set(year, monthOfYear, dayOfMonth);
+                new TimePickerDialog(context, new TimePickerDialog.OnTimeSetListener() {
+                    @Override
+                    public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                        date.set(Calendar.HOUR_OF_DAY, hourOfDay);
+                        date.set(Calendar.MINUTE, minute);
+                        String formatted = dateFormat.format(date.getTime());
+
+                        HashMap<String, Object> hashMap = new HashMap<>();
+                        hashMap.put("endDeal" , formatted);
+                        databaseReference = FirebaseDatabase.getInstance().getReference().child("Item");
+                        databaseReference.child(idToString).child("Capacity").child(capacity).updateChildren(hashMap);
+
+                        Toast.makeText(AddJustItem.this, "" + formatted, Toast.LENGTH_SHORT).show();
+
+                        Log.v("aa", "The choosen one " + formatted);
+                    }
+                },
+                        currentDate.get(Calendar.HOUR_OF_DAY), currentDate.get(Calendar.MINUTE), false).show();
+            }
+        }, currentDate.get(Calendar.YEAR), currentDate.get(Calendar.MONTH), currentDate.get(Calendar.DATE)).show();
+    }
+
+
+    private void addCard(String capacity , String price , String discount , String quantity) {
         final View view = getLayoutInflater().inflate(R.layout.card_add_more, null);
 
         TextView nameView = view.findViewById(R.id.name);
@@ -172,57 +218,47 @@ public class AddJustItem extends AppCompatActivity {
         TextView discountView = view.findViewById(R.id.discountMore);
         TextView quantityView = view.findViewById(R.id.qtyMore);
         Button delete = view.findViewById(R.id.delete);
+        Button addTime = view.findViewById(R.id.addTime);
 
-        nameView.setText(name);
+        nameView.setText(capacity);
         priceView.setText(price);
         discountView.setText(discount);
         quantityView.setText(quantity);
         double priceUp = Double.parseDouble(price);
         double discountUp = Double.parseDouble(discount);
         int qtyUp = Integer.parseInt(quantity);
-        int mgUp = Integer.parseInt(name);
+        int mgUp = Integer.parseInt(capacity);
         HashMap<String, Object> hashMap = new HashMap<>();
         hashMap.put("mg" , mgUp);
         hashMap.put("price" , priceUp);
         hashMap.put("discount" , discountUp);
         hashMap.put("quantity" , qtyUp);
         databaseReference = FirebaseDatabase.getInstance().getReference().child("Item");
-        databaseReference.child(idToString).child("Capacity").child(name).setValue(hashMap);
+        databaseReference.child(idToString).child("Capacity").child(capacity).setValue(hashMap);
       //  db.collection("Item").document(idToString).collection("Capacity").document(name).set(hashMap);
 
-
+        addTime.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showDateTimePicker(capacity);
+            }
+        });
 
 
         delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 layout.removeView(view);
-                databaseReference.child(idToString).child("Capacity").child(name).removeValue();
-                db.collection("Item").document(idToString).collection("Capacity").document(name).delete();
+                databaseReference.child(idToString).child("Capacity").child(capacity).removeValue();
+                db.collection("Item").document(idToString).collection("Capacity").document(capacity).delete();
             }
         });
 
         layout.addView(view);
     }
 
-    /***********************************end add more Functions ************************************************/
+    /***********************************end of add more Functions ************************************************/
 
-
-    /*************************give value to variable ***********************************/
-    private void giveValueToVariable()
-    {
-        Log.d("TAG", "giveValueToVariable: ");
-        itemName = findViewById(R.id.ItemName);
-        medInfo = findViewById(R.id.medicalInfo);
-        scanFet = findViewById(R.id.scanned);
-
-        itemNameUp = itemName.getText().toString();
-        medInfoUp = medInfo.getText().toString();
-        scanFetUp = scanFet.getText().toString();
-        type1up= type1.getSelectedItem().toString();
-        type2up= type2.getSelectedItem().toString();
-    }
-    /**********************************end of give value to variable*****************************************/
 
     /*************************************** Add images Functions *************************************************/
     private void goToGallery()
@@ -406,4 +442,5 @@ public class AddJustItem extends AppCompatActivity {
             }
         });
     }
+
 }

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="@color/drawer_color"
+    android:layout_height="200dp">
+
+<LinearLayout
+    android:layout_marginTop="?attr/actionBarSize"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:layout_height="wrap_content">
+<FrameLayout
+    android:layout_width="wrap_content"
+
+    android:layout_gravity="center"
+    android:background="@drawable/drawer_image_background"
+    android:layout_height="wrap_content">
+    <androidx.constraintlayout.utils.widget.ImageFilterView
+        android:id="@+id/addFav"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        app:roundPercent="1"
+        app:srcCompat="@drawable/ic_logout" />
+</FrameLayout>
+
+
+    <FrameLayout
+        android:background="@drawable/drawer_image_background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_gravity="center"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:srcCompat="@drawable/avatar" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+
+        android:layout_gravity="center"
+        android:background="@drawable/drawer_image_background"
+        android:layout_height="wrap_content">
+        <androidx.constraintlayout.utils.widget.ImageFilterView
+            android:id="@+id/close_nav"
+            android:layout_gravity="center"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:roundPercent="1"
+            app:srcCompat="@drawable/ic_close" />
+    </FrameLayout>
+
+
+
+</LinearLayout>
+
+    <TextView
+        android:layout_marginTop="15dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User Name"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:textColor="@color/white">
+    </TextView>
+
+
+    <TextView
+        android:layout_marginTop="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit profile"
+        android:textSize="18sp"
+        android:layout_gravity="center"
+        android:textColor="@color/white"/>
+
+
+
+</LinearLayout>

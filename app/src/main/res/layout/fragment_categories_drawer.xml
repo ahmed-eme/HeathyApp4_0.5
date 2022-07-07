@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".DrawerPages.CategoriesDrawer">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray">
+    </View>
+<!--start Antibiotic card-->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/Antibiotic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="4dp"
+        android:elevation="8dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0.0px"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        app:cardElevation="1dp"
+        app:cardPreventCornerOverlap="false">
+
+        <View
+            android:layout_width="5dp"
+            android:layout_marginVertical="10dp"
+            android:layout_height="match_parent"
+            android:background="#ff5252">
+
+        </View>
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="4dp"
+            android:src="@drawable/icons8_pill_100"
+            android:layout_gravity="start"
+            android:elevation="2dp"
+            android:padding="3dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="Antibiotic"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/antibioticSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="item Size*"
+                android:textSize="12sp"
+                />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_right"
+            android:layout_gravity="end|center"
+            android:layout_marginRight="20dp"/>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <View
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray">
+    </View>
+
+<!--end Antibiotic cart-->
+
+
+
+
+
+    <!--start Antibiotic and analgesic-->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/analgesic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="4dp"
+        android:elevation="8dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0.0px"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        app:cardElevation="1dp"
+        app:cardPreventCornerOverlap="false">
+
+        <View
+            android:layout_width="5dp"
+            android:layout_marginVertical="10dp"
+            android:layout_height="match_parent"
+            android:background="#ff9f20">
+
+        </View>
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="4dp"
+            android:src="@drawable/icons8_painkiller_98"
+            android:layout_gravity="start"
+            android:elevation="2dp"
+            android:padding="3dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="Antipyretic &amp;\n analgesic"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/analgesicTxtSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="Item Size*"
+                android:textSize="12sp"
+                />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_right"
+            android:layout_gravity="end|center"
+            android:layout_marginRight="20dp"/>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <View
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray">
+    </View>
+    <!--end Antibiotic and analgesic-->
+
+
+    <!--Start git Drugs card-->
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/Drugs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="4dp"
+        android:elevation="8dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0.0px"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        app:cardElevation="1dp"
+        app:cardPreventCornerOverlap="false">
+
+        <View
+            android:layout_width="5dp"
+            android:layout_marginVertical="10dp"
+            android:layout_height="match_parent"
+            android:background="#a658ff">
+
+        </View>
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="4dp"
+            android:src="@drawable/icons8_gastrointestinal_tract_100"
+            android:layout_gravity="start"
+
+            android:elevation="2dp"
+            android:padding="3dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="Git Drugs"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/drugsTxtSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="item size*"
+                android:textSize="12sp"
+                />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_right"
+            android:layout_gravity="end|center"
+            android:layout_marginRight="20dp"/>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <View
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray">
+    </View>
+
+    <!--end git Drugs card-->
+
+
+    <!--Start Equations and resources card-->
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/Equations"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="4dp"
+        android:elevation="8dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0.0px"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        app:cardElevation="1dp"
+        app:cardPreventCornerOverlap="false">
+
+        <View
+            android:layout_width="5dp"
+            android:layout_marginVertical="10dp"
+            android:layout_height="match_parent"
+            android:background="#5d26ea">
+
+        </View>
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="4dp"
+            android:src="@drawable/ic_human"
+            android:layout_gravity="start"
+
+            android:elevation="2dp"
+            android:padding="3dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="Equations &amp;\n Resources"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/equationTxtSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="item size*"
+                android:textSize="12sp"
+                />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_right"
+            android:layout_gravity="end|center"
+            android:layout_marginRight="20dp"/>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <View
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray">
+    </View>
+
+    <!--End Equations and resources card-->
+
+
+    <!--Start Vitamin card-->
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/vitamin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="4dp"
+        android:elevation="8dp"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="0.0px"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        app:cardElevation="1dp"
+        app:cardPreventCornerOverlap="false">
+
+        <View
+            android:layout_width="5dp"
+            android:layout_marginVertical="10dp"
+            android:layout_height="match_parent"
+            android:background="#2ecc71">
+
+        </View>
+
+        <ImageView
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_margin="4dp"
+            android:src="@drawable/icons8_vitamin_100"
+            android:layout_gravity="start"
+
+            android:elevation="2dp"
+            android:padding="3dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:layout_marginTop="20dp"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="Vitamin"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:id="@+id/vitaminTxtSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:text="item size*"
+                android:textSize="12sp"
+                />
+        </LinearLayout>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_arrow_right"
+            android:layout_gravity="end|center"
+            android:layout_marginRight="20dp"/>
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <View
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray">
+    </View>
+
+    <!--End Vitamin card-->
+
+
+</LinearLayout>
+
+</ScrollView>

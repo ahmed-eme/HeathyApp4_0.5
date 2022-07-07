@@ -52,7 +52,7 @@ public class AddItemActivite extends AppCompatActivity {
     Spinner type2;
     /*******************************EditText variables*********************************/
     private EditText itemPrice;
-    private  EditText itemName;
+    private EditText itemName;
     private EditText itemDiscount;
     private EditText quantity;
     private EditText capacity;
@@ -210,7 +210,7 @@ public class AddItemActivite extends AppCompatActivity {
         ItemClass itemClass = new ItemClass(id , itemNameUp , urlForClass , type1up , type2up , medInfoUp , scanFetUp , user.getUid());
         ItemDAO itemDAO = new ItemDAO();
         //itemDAO.add(idToString,itemClass);
-        CapacityClass capacity = new CapacityClass(capacityUp , itemPriceUp , itemDiscountUp , quantityUp);
+        CapacityClass capacity = new CapacityClass(capacityUp , itemPriceUp , itemDiscountUp , quantityUp , "addtest");
         CapacityDAO capacityAUD = new CapacityDAO();
         capacityAUD.add( idToString ,mgString,capacity);
     }

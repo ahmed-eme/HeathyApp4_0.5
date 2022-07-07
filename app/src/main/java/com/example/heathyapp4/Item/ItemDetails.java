@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -38,10 +39,12 @@ public class ItemDetails extends AppCompatActivity implements CapacityAdapter.It
 
     private View mViewGroup;
     private TextView medicalBtn;
+    private TextView itemNameTitle , itemTypeTitle;
     private View scanContainer;
     private TextView scanBtn;
     private TextView priceText , discountTxt , saveTxt , percentTxt;
     private TextView madinfo , scanLeafelt;
+    private TextView daysTxt , hoursTxt , minTxt , secTxt;
 
     private RecyclerView courseRV;
     private RecyclerView  capacityRV;
@@ -51,48 +54,23 @@ public class ItemDetails extends AppCompatActivity implements CapacityAdapter.It
     private  ImageView mainImage;
     private Button addToCart , buyNow;
     private Spinner qtySpinner;
+// var upload to cart
+    private String uploadImageToCart;
+    private String type1upload;
+    private String nameupload;
 
+    String id;
 
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-    DatabaseReference myRef = database.getReference("Item");
+    DatabaseReference itemRef = database.getReference("Item");
+    DatabaseReference cartRef = database.getReference("Cart");
     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_details);
-        mViewGroup = findViewById(R.id.viewsContainer);
-        medicalBtn = findViewById(R.id.button);
-        scanContainer = findViewById(R.id.scanContainer);
-        scanBtn = findViewById(R.id.scanBtn);
-        mainImage = findViewById(R.id.mainImage);
 
-
-
-/*        Glide.with(this).load("https://firebasestorage.googleapis.com/v0/b/heathyapp4.appspot.com/o/profileImage%2F1655790023281.jpg?alt=media&token=d4eb3867-e7b6-48d8-bf37-2bee1ada0ab9").
-               fitCenter().into(mainImage);*/
-       // Glide.with(this).load("http://via.placeholder.com/300.png").placeholder(R.drawable.baby).dontAnimate().into(mainImage);
-
-        mViewGroup.setVisibility(View.GONE);
-        scanContainer.setVisibility(View.GONE);
-
-        courseRV = findViewById(R.id.idRVItems);
-        capacityRV = findViewById(R.id.capacityRecyclerView);
-        priceText = findViewById(R.id.thePriceText);
-        discountTxt = findViewById(R.id.discountText);
-        saveTxt = findViewById(R.id.saveTxt);
-        percentTxt = findViewById(R.id.discountper);
-
-        madinfo = findViewById(R.id.madInfoText);
-        scanLeafelt = findViewById(R.id.scanLeafletText);
-
-        addToCart = findViewById(R.id.addToCart);
-        buyNow = findViewById(R.id.buyNow);
-
-        qtySpinner = findViewById(R.id.qtySpinner);
-
-
-        db = FirebaseDatabase.getInstance().getReference();
-
+        initUI();
 
         courseRV.setHasFixedSize(true);
         capacityRV.setHasFixedSize(true);
@@ -100,16 +78,12 @@ public class ItemDetails extends AppCompatActivity implements CapacityAdapter.It
         courseRV.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         capacityRV.setLayoutManager(new LinearLayoutManager(this , LinearLayoutManager.HORIZONTAL , false));
 
-
-
         Bundle bundle=getIntent().getExtras();
-        String id =bundle.getString("id");
-
-
+         id =bundle.getString("id");
 
         loadrecyclerImage(id);
-
-
+        giveFirstValue(id);
+        countDownStart();
 
 
         medicalBtn.setOnClickListener(new View.OnClickListener() {
@@ -135,103 +109,154 @@ public class ItemDetails extends AppCompatActivity implements CapacityAdapter.It
 
     }
 
+    final CapacityClass[] cap = {new CapacityClass()};
+    ArrayList firstListQty = new ArrayList<>();
+
+    private void giveFirstValue(String id) {
+
+
+
+        int idInt = Integer.parseInt(id);
+        Query query = itemRef
+                .orderByChild("id")
+                .equalTo(idInt);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                for (DataSnapshot snap2 : snapshot.child(id).child("Capacity").getChildren()) {
+
+                   cap[0] = snap2.getValue(CapacityClass.class);
+
+                    break;
+                }
+                finaldis = (cap[0].getPrice() / 100.0f) * cap[0].getDiscount();
+                precentDis = cap[0].getPrice() - finaldis;
+
+                priceText.setText(String.valueOf("SAR "+ cap[0].getPrice() ));
+                priceText.setPaintFlags(priceText.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+                discountTxt.setText(String.valueOf("SAR "+String.format("%.2f", precentDis)));
+                saveTxt.setText(String.valueOf("SAR "+String.format("%.2f", finaldis)));
+                percentTxt.setText(String.valueOf("(" +String.format("%.1f", cap[0].getDiscount()) + "%"+")"));
+                endDeal = cap[0].getEndDeal();
+
+                for (int i = 0; i <= cap[0].getQuantity(); i++) {
+                    firstListQty.add(i);
+                }
+
+                ArrayAdapter adapterQty1 = new ArrayAdapter(ItemDetails.this, android.R.layout.simple_list_item_1, firstListQty);
+                qtySpinner.setAdapter(adapterQty1);
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                throw error.toException();
+            }
+        });
+    }
+
+    private void initUI() {
+        mViewGroup = findViewById(R.id.viewsContainer);
+        medicalBtn = findViewById(R.id.button);
+        scanContainer = findViewById(R.id.scanContainer);
+        scanBtn = findViewById(R.id.scanBtn);
+        mainImage = findViewById(R.id.mainImage);
+        mViewGroup.setVisibility(View.GONE);
+        scanContainer.setVisibility(View.GONE);
+        courseRV = findViewById(R.id.idRVItems);
+        capacityRV = findViewById(R.id.capacityRecyclerView);
+        priceText = findViewById(R.id.thePriceText);
+        discountTxt = findViewById(R.id.discountText);
+        saveTxt = findViewById(R.id.saveTxt);
+        percentTxt = findViewById(R.id.discountper);
+        madinfo = findViewById(R.id.madInfoText);
+        scanLeafelt = findViewById(R.id.scanLeafletText);
+        addToCart = findViewById(R.id.addToCart);
+        buyNow = findViewById(R.id.buyNow);
+        qtySpinner = findViewById(R.id.qtySpinner);
+        daysTxt = findViewById(R.id.daysTxt);
+        hoursTxt = findViewById(R.id.hoursTxt);
+        minTxt = findViewById(R.id.minsTxt);
+        secTxt = findViewById(R.id.secTxt);
+        itemNameTitle = findViewById(R.id.itemNameTitle);
+        itemTypeTitle = findViewById(R.id.itemTypeTitle);
+        db = FirebaseDatabase.getInstance().getReference();
+    }
+
+    /************************************Add to cart*************************************/
+
+
     private void addToCartFun(String id) {
 
+        if (getmg == 0)
+        {
+            addToCartValue(cap[0].getMg() , cap[0].getQuantity() , cap[0].getPrice() , cap[0].getDiscount());
+        }
+        else {
+            addToCartValue(getmg , getQty , getprice , getdis);
+        }
+    }
+
+    private void addToCartValue(int mg , int Qty , double price , double dis)
+    {
         String qtySpinnerUp= qtySpinner.getSelectedItem().toString();
         String idStr = String.valueOf(id);
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss", Locale.getDefault());
-        String currentDateandTime = sdf.format(new Date());
-        String mgStr = String.valueOf(getmg);
+        String mgStr = String.valueOf(mg);
         int qtySpinInt  = Integer.valueOf(qtySpinnerUp);
         if(qtySpinInt >= 5)
         {
             String currentDate = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
 
-            int newQty = getQty - qtySpinInt;
+            int newQty = Qty - qtySpinInt;
             HashMap<String, Object> updateHash = new HashMap<String, Object>();
             updateHash.put("quantity", newQty);
 
             HashMap<String, Object> hashMap = new HashMap<String, Object>();
-
-            hashMap.put("price" , getprice);
-            hashMap.put("discount" , getdis);
-            hashMap.put("quantity" , qtySpinnerUp);
-            hashMap.put("mg" , getmg);
-            hashMap.put("date" , currentDateandTime);
+           // String imgLink, String type1, String name, double price, double discount, String id, String endDeal, int quantity
+            // userid , itemid , name , mg;
+            hashMap.put("price" , price);
+            hashMap.put("discount" , dis);
+            hashMap.put("quantity" , qtySpinInt);
+            hashMap.put("mg" , mg);
+            hashMap.put("endDeal" , endDeal);
             hashMap.put("userId" , user.getUid());
+            hashMap.put("itemId" , id);
+            hashMap.put("type1" , type1upload);
+            hashMap.put("imgLink" , uploadImageToCart);
+            hashMap.put("name" , nameupload);
 
-            myRef.child(idStr).child("Cart").push().updateChildren(hashMap);
+            cartRef.push().updateChildren(hashMap);
 
 
-            myRef.child(idStr).child("Capacity").child(mgStr).updateChildren(updateHash);
-
-           /* myRef.child(idStr).child("Cart").child(user.getUid()).child("Price").setValue(getprice);
-            myRef.child(idStr).child("Cart").child(user.getUid()).child("discount").setValue(getdis);
-            myRef.child(idStr).child("Cart").child(user.getUid()).child("quantity").setValue(qtySpinnerUp);
-            myRef.child(idStr).child("Cart").child(user.getUid()).child("mg").setValue(getmg);
-            myRef.child(idStr).child("Cart").child(user.getUid()).child("Date").setValue(currentDateandTime);*/
+            itemRef.child(idStr).child("Capacity").child(mgStr).updateChildren(updateHash);
             Toast.makeText(ItemDetails.this, "Add to cart Successful", Toast.LENGTH_SHORT).show();
 
         }
         else {
             Toast.makeText(ItemDetails.this, "The minimum order is 5", Toast.LENGTH_SHORT).show();
         }
-
     }
+
+    /************************************end of Add to cart*************************************/
+
+
 
 
     /*****************************Images horizontal *********************************************************/
-    private String image;
-
-   /* private void getDetails(int id)
-    {
-        String idStr = String.valueOf(id);
-        Bundle bundle=getIntent().getExtras();
-        int mg =bundle.getInt("pos");
-        String mgStr = String.valueOf(mg);
-        ArrayList<CapacityClass> capList = new ArrayList();
-
-
-
-
-        myRef.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-
-
-
-                for(DataSnapshot snapshot :dataSnapshot.child(idStr).child("Capacity").child(mgStr).getChildren())
-                {
-                    int mg = snapshot.child("mg").getValue(int.class);
-                }
-
-
-               // capacityRV.setAdapter(capAdapter);
-
-            }
-
-            @Override
-            public void onCancelled(DatabaseError error) {
-                // Failed to read value
-                Log.w(TAG, "Failed to read value.", error.toException());
-            }
-        });
-    }*/
 
 
 
     private void loadrecyclerImage(String id) {
 
-        Bundle bundle=getIntent().getExtras();
-        int pos =bundle.getInt("pos");
-        CapacityClass itemClass = new CapacityClass();
+
         ArrayList<String> imgList = new ArrayList<>();
-      // ArrayList<String> list = new ArrayList();
         ArrayList<CapacityClass> capList = new ArrayList();
         AdapterImages imgAdapter = new AdapterImages(imgList, this);
         CapacityAdapter capAdapter = new CapacityAdapter(capList, this );
         int idInt = Integer.parseInt(id);
-        Query query = myRef
+        Query query = itemRef
                 .orderByChild("id")
                 .equalTo(idInt);
         query.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -243,6 +268,7 @@ public class ItemDetails extends AppCompatActivity implements CapacityAdapter.It
                     imgList.add(snap2.getValue(String.class));
 
                     String imageMain = imgList.get(0);
+                    uploadImageToCart = imageMain;
                     Glide
                             .with(getApplicationContext())
                             .load(imageMain)
@@ -269,9 +295,13 @@ public class ItemDetails extends AppCompatActivity implements CapacityAdapter.It
                         String medinfoData = snap4.child("medInfo").getValue(String.class);
                         String scanLeafeltData = snap4.child("scanLeaflet").getValue(String.class);
 
+                        type1upload = snap4.child("type1").getValue(String.class);
+                        nameupload = snap4.child("name").getValue(String.class);
+                        itemNameTitle.setText(nameupload);
+                        itemTypeTitle.setText(type1upload);
+
                         madinfo.setText(medinfoData);
                         scanLeafelt.setText(scanLeafeltData);
-
                 }
 
 
@@ -322,18 +352,24 @@ public class ItemDetails extends AppCompatActivity implements CapacityAdapter.It
 
         scanIsVisible = !scanIsVisible;
     }
-   private double getprice;
+
+
+    private double getprice;
     private double getdis;
     private   double finaldis;
     private  double precentDis;
     private int getQty;
     private int getmg;
+    private String endDeal;
+  //  private String  EVENT_DATE_TIME = "2022-8-2 13:00:00";
+
     @Override
     public void ItemInfoLisner(Intent intent) {
           getprice = intent.getDoubleExtra("Price" , 0.0);
           getdis = intent.getDoubleExtra("discount" , 0.0);
           getQty = intent.getIntExtra("Qty" , 0);
           getmg = intent.getIntExtra("mg" , 0);
+          endDeal = intent.getStringExtra("endDeal");
           System.out.println(getQty);
         ArrayList listQty = new ArrayList<>();
 
@@ -341,17 +377,66 @@ public class ItemDetails extends AppCompatActivity implements CapacityAdapter.It
             listQty.add(i);
         }
 
-        ArrayAdapter adapterType1 = new ArrayAdapter(this, android.R.layout.simple_list_item_1, listQty);
-        qtySpinner.setAdapter(adapterType1);
+
+        ArrayAdapter adapterQty1 = new ArrayAdapter(this, android.R.layout.simple_list_item_1, listQty);
+        qtySpinner.setAdapter(adapterQty1);
 
          finaldis = (getprice / 100.0f) * getdis;
+
          precentDis = getprice - finaldis;
+
          priceText.setText(String.valueOf("SAR "+getprice ));
          priceText.setPaintFlags(priceText.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
          discountTxt.setText(String.valueOf("SAR "+precentDis));
          saveTxt.setText(String.valueOf("SAR "+finaldis));
          percentTxt.setText(String.valueOf("(" +getdis + "%"+")"));
 
+       // countDownStart();
+
+
+
+    }
+    private Handler handler = new Handler();
+    private Runnable runnable;
+    private String DATE_FORMAT = "yyyy-MM-dd HH:mm:ss";
+
+
+    private void countDownStart() {
+        runnable = new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    handler.postDelayed(this, 1000);
+                    SimpleDateFormat dateFormat = new SimpleDateFormat(DATE_FORMAT);
+                    Date event_date = dateFormat.parse(endDeal);
+                    Date current_date = new Date();
+                    if (!current_date.after(event_date)) {
+                        long diff = event_date.getTime() - current_date.getTime();
+
+                        long Days = diff /( 24 * 60 * 60 * 1000);
+                        long Hours = diff / (60 * 60 * 1000) % 24;
+                        long Minutes = diff / (60 * 1000) % 60;
+                        long Seconds = diff / 1000 % 60;
+
+                        daysTxt.setText(String.format("%02d", Days) + "d ");
+                        hoursTxt.setText(String.format("%02d", Hours) + "h ");
+                        minTxt.setText(String.format("%02d", Minutes) + "m ");
+                        secTxt.setText(String.format("%02d", Seconds) + "s ");
+                    } else {
+
+                        handler.removeCallbacks(runnable);
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+        handler.postDelayed(runnable, 0);
+    }
+
+    protected void onStop() {
+        super.onStop();
+        handler.removeCallbacks(runnable);
     }
 
     @Override

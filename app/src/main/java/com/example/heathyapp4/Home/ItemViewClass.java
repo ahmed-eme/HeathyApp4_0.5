@@ -1,5 +1,7 @@
 package com.example.heathyapp4.Home;
 
+import android.graphics.drawable.Drawable;
+
 import java.util.ArrayList;
 
 public class ItemViewClass {
@@ -10,13 +12,15 @@ public class ItemViewClass {
     private String name;
     private double price;
     private String id;
+    private int isFav;
 
-    public ItemViewClass(String imgLink, String type1, String name, double price , String id) {
+    public ItemViewClass(String imgLink, String type1, String name, double price , String id ,int isFav) {
         ImgLink = imgLink;
         this.type1 = type1;
         this.name = name;
         this.price = price;
         this.id = id;
+        this.isFav = isFav;
     }
 
     public String getId() {
@@ -57,5 +61,13 @@ public class ItemViewClass {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public int isFav() {
+        return isFav;
+    }
+
+    public void setFav(int fav) {
+        isFav = fav;
     }
 }

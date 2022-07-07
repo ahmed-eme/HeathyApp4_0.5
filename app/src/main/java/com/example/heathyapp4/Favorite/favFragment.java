@@ -1,4 +1,4 @@
-package com.example.heathyapp4.Home;
+package com.example.heathyapp4.Favorite;
 
 import android.os.Bundle;
 
@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.GridView;
 
+import com.example.heathyapp4.Home.ItemViewClass;
 import com.example.heathyapp4.Item.NewItemClass;
 import com.example.heathyapp4.Item.itemAdapter;
 import com.example.heathyapp4.R;
@@ -98,19 +99,30 @@ public class favFragment extends Fragment {
         itemAdapter adapter = new itemAdapter(getActivity(), list);
 
         /*************************************************/
-        itemRef.addListenerForSingleValueEvent(new ValueEventListener() {
+        itemRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-
                 String id = null;
                 String type1 = null;
                 String name = null;
                 double price = 0.0;
                 String image = null;
-
+                boolean isFav = false;
+                int favicon = 0;
+                list.clear();
                 for(DataSnapshot snap :snapshot.getChildren() ) {
 
-                    if (snap.child("Favorite").child(user.getUid()).exists()) {
+                    if (snap.child("Favorite").hasChild(user.getUid())) {
+
+                        isFav = snap.child("Favorite").hasChild(user.getUid());
+                        if(isFav)
+                        {
+                            favicon = R.drawable.ic_favorite_red;
+                        }
+                        else {
+                            favicon = R.drawable.ic_baseline_favorite_24;
+                        }
+
                         id = snap.getKey();
                         type1 = snap.child("type1").getValue(String.class);
                         name = snap.child("name").getValue(String.class);
@@ -124,7 +136,7 @@ public class favFragment extends Fragment {
                             price = snap3.child("price").getValue(double.class);
                             break;
                         }
-                        ItemViewClass item = new ItemViewClass(image, type1, name, price, id);
+                        ItemViewClass item = new ItemViewClass(image, type1, name, price, id , favicon);
                         list.add(item);
                     } else
                     {
@@ -132,11 +144,11 @@ public class favFragment extends Fragment {
                     }
                     getGridid.setAdapter(adapter);
                 }
-                }
+            }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-                throw error.toException();
+                System.out.println("error");
             }
         });
         /*************************************************/
